@@ -71,6 +71,6 @@ public static class DirectoryInfoExt
     /// Method for Task2
     /// </summary>
     /// <param name="directory"></param>
-    public static long CalculateSize(this DirectoryInfo directory) =>
-        directory.GetAllTheFiles().Files.Aggregate(0L, (i, file) => i + file.Length);
+    public static (long Size, int FilesCount) CalculateSize(this DirectoryInfo directory) =>
+        directory.GetAllTheFiles().Files.Aggregate((0L, 0), (i, file) => (i.Item1 + file.Length, i.Item2 + 1));
 }

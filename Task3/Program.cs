@@ -26,12 +26,17 @@
                 return 0;
             }
 
-            var sizeBefore = directory.CalculateSize();
+            var resultBefore = directory.CalculateSize();
+            var sizeBefore = resultBefore.Size;
+            var filesBefore = resultBefore.FilesCount;
             Console.WriteLine($"Size before cleaning: {sizeBefore} bytes");
             directory.CleanTheDirectory(timer);
-            var sizeAfter = directory.CalculateSize();
-            Console.WriteLine($"Released: {sizeBefore - sizeAfter} bytes");
+            var resultAfter = directory.CalculateSize();
+            var sizeAfter = resultAfter.Size;
+            var filesAfter = resultAfter.FilesCount;
             Console.WriteLine($"Size after cleaning: {sizeAfter} bytes");
+            Console.WriteLine($"Released: {sizeBefore - sizeAfter} bytes");
+            Console.WriteLine($"Deleted {filesBefore - filesAfter} files");
             return 0;
         }
 
