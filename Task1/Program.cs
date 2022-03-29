@@ -8,10 +8,16 @@ namespace WorkWithFiles
         {
             const int timer = 1;        //this is the time that files are untouchable (minutes)
             
-            string directoryPath = "";
+            string directoryPath;
             if (arg.Length > 0)
             {
-                directoryPath = arg[0];         //we use only first parameter
+                directoryPath = arg[0];         //we use only first parameter and it is supposed to be a path to a directory
+            }
+            else
+            {
+                Console.WriteLine("Please, set up the parameter (Task1.exe PathToDirectory)");
+                Console.ReadLine();
+                return 0;
             }
             
             var directory = new DirectoryInfo(directoryPath);
